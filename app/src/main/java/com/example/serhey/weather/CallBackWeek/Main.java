@@ -8,171 +8,58 @@ public class Main {
 
     @SerializedName("temp")
     @Expose
-    private Float temp;
+    private float temp;
     @SerializedName("temp_min")
     @Expose
-    private Float tempMin;
+    private float tempMin;
     @SerializedName("temp_max")
     @Expose
-    private Float tempMax;
+    private float tempMax;
     @SerializedName("pressure")
     @Expose
-    private Float pressure;
+    private float pressure;
     @SerializedName("sea_level")
     @Expose
-    private Float seaLevel;
+    private float seaLevel;
     @SerializedName("grnd_level")
     @Expose
-    private Float grndLevel;
+    private float grndLevel;
     @SerializedName("humidity")
     @Expose
-    private Integer humidity;
+    private float humidity;
     @SerializedName("temp_kf")
     @Expose
-    private Integer tempKf;
+    private float tempKf;
 
-    /**
-     *
-     * @return
-     *     The temp
-     */
-    public Float getTemp() {
+    public float getTemp() {
         return temp;
     }
 
-    /**
-     *
-     * @param temp
-     *     The temp
-     */
-    public void setTemp(Float temp) {
-        this.temp = temp;
-    }
-
-    /**
-     *
-     * @return
-     *     The tempMin
-     */
-    public Float getTempMin() {
+    public float getTempMin() {
         return tempMin;
     }
 
-    /**
-     *
-     * @param tempMin
-     *     The temp_min
-     */
-    public void setTempMin(Float tempMin) {
-        this.tempMin = tempMin;
-    }
-
-    /**
-     *
-     * @return
-     *     The tempMax
-     */
-    public Float getTempMax() {
+    public float getTempMax() {
         return tempMax;
     }
 
-    /**
-     *
-     * @param tempMax
-     *     The temp_max
-     */
-    public void setTempMax(Float tempMax) {
-        this.tempMax = tempMax;
-    }
-
-    /**
-     *
-     * @return
-     *     The pressure
-     */
-    public Float getPressure() {
+    public float getPressure() {
         return pressure;
     }
 
-    /**
-     *
-     * @param pressure
-     *     The pressure
-     */
-    public void setPressure(Float pressure) {
-        this.pressure = pressure;
-    }
-
-    /**
-     *
-     * @return
-     *     The seaLevel
-     */
-    public Float getSeaLevel() {
+    public float getSeaLevel() {
         return seaLevel;
     }
 
-    /**
-     *
-     * @param seaLevel
-     *     The sea_level
-     */
-    public void setSeaLevel(Float seaLevel) {
-        this.seaLevel = seaLevel;
-    }
-
-    /**
-     *
-     * @return
-     *     The grndLevel
-     */
-    public Float getGrndLevel() {
+    public float getGrndLevel() {
         return grndLevel;
     }
 
-    /**
-     *
-     * @param grndLevel
-     *     The grnd_level
-     */
-    public void setGrndLevel(Float grndLevel) {
-        this.grndLevel = grndLevel;
-    }
-
-    /**
-     *
-     * @return
-     *     The humidity
-     */
-    public Integer getHumidity() {
+    public float getHumidity() {
         return humidity;
     }
 
-    /**
-     *
-     * @param humidity
-     *     The humidity
-     */
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
-    }
-
-    /**
-     *
-     * @return
-     *     The tempKf
-     */
-    public Integer getTempKf() {
+    public float getTempKf() {
         return tempKf;
     }
-
-    /**
-     *
-     * @param tempKf
-     *     The temp_kf
-     */
-    public void setTempKf(Integer tempKf) {
-        this.tempKf = tempKf;
-    }
-
 }

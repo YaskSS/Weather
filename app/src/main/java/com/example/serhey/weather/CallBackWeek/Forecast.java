@@ -1,15 +1,15 @@
 
 package com.example.serhey.weather.CallBackWeek;
 
-import com.example.serhey.weather.CallBackNow.Main;
-import com.example.serhey.weather.CallBackNow.Weather;
-import com.example.serhey.weather.CallBackNow.Wind;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class List {
+public class Forecast {
 
     @SerializedName("dt")
     @Expose
@@ -19,7 +19,7 @@ public class List {
     private Main main;
     @SerializedName("weather")
     @Expose
-    private java.util.List<Weather> weather = new ArrayList<Weather>();
+    private List<Weather> weather = new ArrayList<Weather>();
     @SerializedName("clouds")
     @Expose
     private Clouds clouds;
@@ -31,7 +31,7 @@ public class List {
     private Sys_ sys;
     @SerializedName("dt_txt")
     @Expose
-    private String dtTxt;
+    private Date dtTxt;
     @SerializedName("rain")
     @Expose
     private Rain rain;
@@ -149,7 +149,7 @@ public class List {
      * @return
      *     The dtTxt
      */
-    public String getDtTxt() {
+    public Date getDtTxt() {
         return dtTxt;
     }
 
@@ -158,7 +158,7 @@ public class List {
      * @param dtTxt
      *     The dt_txt
      */
-    public void setDtTxt(String dtTxt) {
+    public void setDtTxt(Date dtTxt) {
         this.dtTxt = dtTxt;
     }
 

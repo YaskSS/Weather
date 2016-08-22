@@ -23,7 +23,7 @@ public class BackWeek {
     private Integer cnt;
     @SerializedName("list")
     @Expose
-    private java.util.List<List> list = new ArrayList<List>();
+    private java.util.List<Forecast> list = new ArrayList<Forecast>();
 
     /**
      *
@@ -102,7 +102,7 @@ public class BackWeek {
      * @return
      *     The list
      */
-    public java.util.List<List> getList() {
+    public java.util.List<Forecast> getList() {
         return list;
     }
 
@@ -111,7 +111,7 @@ public class BackWeek {
      * @param list
      *     The list
      */
-    public void setList(java.util.List<List> list) {
+    public void setList(java.util.List<Forecast> list) {
         this.list = list;
     }
 

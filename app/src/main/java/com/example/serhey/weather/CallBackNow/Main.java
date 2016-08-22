@@ -9,108 +9,37 @@ public class Main {
 
     @SerializedName("temp")
     @Expose
-    private Float temp;
+    private float temp;
     @SerializedName("pressure")
     @Expose
-    private Integer pressure;
+    private float pressure;
     @SerializedName("humidity")
     @Expose
-    private Integer humidity;
+    private float humidity;
     @SerializedName("temp_min")
     @Expose
-    private Float tempMin;
+    private float tempMin;
     @SerializedName("temp_max")
     @Expose
-    private Float tempMax;
+    private float tempMax;
 
-    /**
-     *
-     * @return
-     *     The temp
-     */
-    public Float getTemp() {
+    public float getTemp() {
         return temp;
     }
 
-    /**
-     *
-     * @param temp
-     *     The temp
-     */
-    public void setTemp(Float temp) {
-        this.temp = temp;
-    }
-
-    /**
-     *
-     * @return
-     *     The pressure
-     */
-    public Integer getPressure() {
+    public float getPressure() {
         return pressure;
     }
 
-    /**
-     *
-     * @param pressure
-     *     The pressure
-     */
-    public void setPressure(Integer pressure) {
-        this.pressure = pressure;
-    }
-
-    /**
-     *
-     * @return
-     *     The humidity
-     */
-    public Integer getHumidity() {
+    public float getHumidity() {
         return humidity;
     }
 
-    /**
-     *
-     * @param humidity
-     *     The humidity
-     */
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
-    }
-
-    /**
-     *
-     * @return
-     *     The tempMin
-     */
-    public Float getTempMin() {
+    public float getTempMin() {
         return tempMin;
     }
 
-    /**
-     *
-     * @param tempMin
-     *     The temp_min
-     */
-    public void setTempMin(Float tempMin) {
-        this.tempMin = tempMin;
-    }
-
-    /**
-     *
-     * @return
-     *     The tempMax
-     */
-    public Float getTempMax() {
+    public float getTempMax() {
         return tempMax;
     }
-
-    /**
-     *
-     * @param tempMax
-     *     The temp_max
-     */
-    public void setTempMax(Float tempMax) {
-        this.tempMax = tempMax;
-    }
-
 }
