@@ -1,0 +1,46 @@
+package com.example.serhey.weather;
+
+import android.appwidget.AppWidgetManager;
+import android.appwidget.AppWidgetProvider;
+import android.content.Context;
+import android.util.Log;
+import android.widget.TextView;
+
+import java.util.Arrays;
+
+/**
+ * Created by Serhey on 22.08.2016.
+ */
+public class MyWidget extends AppWidgetProvider {
+
+    TextView textView;
+
+    final String LOG_TAG = "myLogs";
+
+    @Override
+    public void onEnabled(Context context) {
+        super.onEnabled(context);
+
+        Log.d(LOG_TAG, "onEnabled");
+    }
+
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager,int[] appWidgetIds) {
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
+
+        Log.d(LOG_TAG, "onUpdate " + Arrays.toString(appWidgetIds));
+    }
+
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        super.onDeleted(context, appWidgetIds);
+        Log.d(LOG_TAG, "onDeleted " + Arrays.toString(appWidgetIds));
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+        Log.d(LOG_TAG, "onDisabled");
+    }
+
+}
