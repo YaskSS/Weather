@@ -3,7 +3,8 @@
     package="com.example.serhey.weather">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:name=".core.App"
         android:allowBackup="true"
@@ -11,13 +12,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.TabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
         <receiver
             android:name="MyWidget"
@@ -33,6 +36,9 @@
                 android:resource="@xml/widget_metadata">
             </meta-data>
         </receiver>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="11ebc2b2d8bb6619f2d1fb2151840b31c85fd793" />
     </application>
 
 </manifest>

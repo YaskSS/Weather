@@ -14,7 +14,7 @@ public class BackNow {
     private Coord coord;
     @SerializedName("weather")
     @Expose
-    private List<Weather> weather = new ArrayList<Weather>();
+    private java.util.List<Weather> weather = new ArrayList<Weather>() ;
     @SerializedName("base")
     @Expose
     private String base;
@@ -58,14 +58,18 @@ public class BackNow {
     }
 
     /**
-     * @return The weather
+     *
+     * @return
+     *     The weather
      */
     public List<Weather> getWeather() {
         return weather;
     }
 
     /**
-     * @param weather The weather
+     *
+     * @param weather
+     *     The weather
      */
     public void setWeather(List<Weather> weather) {
         this.weather = weather;

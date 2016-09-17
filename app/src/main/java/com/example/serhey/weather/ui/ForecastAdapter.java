@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.serhey.weather.CallBackWeek.Forecast;
 import com.example.serhey.weather.R;
+import com.example.serhey.weather.picture.PictureAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,7 +21,9 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.VH> {
 
     private List<Forecast> data;
     private LayoutInflater inflater;
-
+    private PictureAdapter pictureAdapter1 = new PictureAdapter();
+    private DayOfWeek dayOfWeek = new DayOfWeek();
+    private WindDirection windDirection = new WindDirection();
     public ForecastAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         data = new ArrayList<>();
@@ -48,17 +52,26 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.VH> {
 
     public class VH extends RecyclerView.ViewHolder{
         TextView temp;
+        TextView temperature_item_fragment;
+        ImageView iconWind;
         ImageView icon;
+
 
         public VH(View itemView) {
             super(itemView);
             temp = (TextView) itemView.findViewById(R.id.temp);
+            temperature_item_fragment = (TextView) itemView.findViewById(R.id.temperature_item_fragment);
+            iconWind = (ImageView) itemView.findViewById(R.id.iconWind);
             icon = (ImageView) itemView.findViewById(R.id.icon);
         }
 
         public void fill(Forecast forecast, int position){
-            temp.setText( new SimpleDateFormat(" HH.mm").format(forecast.getDtTxt()) + "  "+forecast.getMain().getTemp() + "C");
-            icon.setImageResource(R.mipmap.ic_launcher);
+            temp.setText(dayOfWeek.getDayOfWeek(forecast.getDtTxt()) + " "+ new SimpleDateFormat("MM.dd в HH.mm").format(forecast.getDtTxt()));
+            temperature_item_fragment.setText(String.format("%s°C",forecast.getMain().getTemp()));
+            //temp.setText( new SimpleDateFormat("MM.dd_HH.mm").format(forecast.getDtTxt()) + "  "+forecast.getMain().getTemp() + "C");
+            iconWind.setImageResource(windDirection.setIconWind(forecast.getWind().getDeg()));
+            icon.setImageResource(pictureAdapter1.setImage(forecast.getWeather().get(0).getIcon()));
+            //icon.setImageResource(R.mipmap.ic_launcher);
             icon.setColorFilter(new Random().nextInt());
         }
     }

@@ -1,10 +1,6 @@
 
 package com.example.serhey.weather;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Generated;
-
 import com.example.serhey.weather.CallBackNow.Clouds;
 import com.example.serhey.weather.CallBackNow.Coord;
 import com.example.serhey.weather.CallBackNow.Main;
@@ -13,6 +9,11 @@ import com.example.serhey.weather.CallBackNow.Weather;
 import com.example.serhey.weather.CallBackNow.Wind;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")
 public class AnswerNow {
