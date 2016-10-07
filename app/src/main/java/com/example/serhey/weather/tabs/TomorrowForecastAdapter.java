@@ -3,6 +3,7 @@ package com.example.serhey.weather.tabs;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,11 +30,11 @@ import retrofit2.Response;
 /**
  * Created by Serhey on 04.09.2016.
  */
-public class TomorrowForecastAdapter extends Fragment {
+public class TomorrowForecastAdapter extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     protected AppBridge appBridge;
     private PictureAdapter mPictureAdapter = new PictureAdapter();
-
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     List<Forecast> forecasts = new ArrayList<>();
 
     TextView tvCity;
@@ -49,14 +50,15 @@ public class TomorrowForecastAdapter extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        appBridge= (AppBridge) getActivity().getApplication();
+        appBridge = (AppBridge) getActivity().getApplication();
         View view = inflater.inflate(R.layout.fragment_temp2, null);
         tvCity = (TextView) view.findViewById(R.id.textViewCity);
         tvTemperature = (TextView) view.findViewById(R.id.textViewTemperature2);
         textViewWind = (TextView) view.findViewById(R.id.textViewVeter);
         textViewDate = (TextView) view.findViewById(R.id.textViewDate);
         imageView = (ImageView) view.findViewById(R.id.imageView);
-
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_tomorrow);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
         loadWeather();
         return view;
@@ -69,8 +71,8 @@ public class TomorrowForecastAdapter extends Fragment {
                 if (response.isSuccessful()) {
                     Log.d("qwe", "ok");
                     tvCity.setText(response.body().getCity().getName());
-                    textViewDate.setText(dayOfWeek.getDayOfWeek(response.body().getList().get(0).getDtTxt()) + " "+new SimpleDateFormat("MM.dd").format(response.body().getList().get(0).getDtTxt()));
-                    tvTemperature.setText(String.format("%s°C",response.body().getList().get(0).getMain().getTemp()));
+                    textViewDate.setText(dayOfWeek.getDayOfWeek(response.body().getList().get(0).getDtTxt()) + " " + new SimpleDateFormat("MM.dd").format(response.body().getList().get(0).getDtTxt()));
+                    tvTemperature.setText(String.format("%s°C", response.body().getList().get(0).getMain().getTemp()));
                     imageView.setImageResource(pictureAdapter.setImage(response.body().getList().get(0).getWeather().get(0).getIcon()));
                     textViewWind.setText(String.format("Ветер %s м/с   Облачность %s%%", response.body().getList().get(0).getWind()
                             .getSpeed().toString(), response.body().getList().get(0).getClouds().getAll().toString()));
@@ -86,5 +88,11 @@ public class TomorrowForecastAdapter extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        loadWeather();
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }

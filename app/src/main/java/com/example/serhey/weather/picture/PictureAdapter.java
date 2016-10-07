@@ -50,12 +50,4 @@ public class PictureAdapter {
                 }
        return ansverMethod;
     }
-    /*public static final int d10=0x7f02004b;
-    public static final int d20=0x7f02004c;
-    public static final int d31=0x7f02004d;
-    public static final int d90=0x7f02004e;
-    public static final int n01=0x7f02004f;
-    public static final int n11=0x7f020050;
-    public static final int n30=0x7f020051;*/
-
 }

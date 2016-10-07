@@ -1,10 +1,11 @@
-
-package com.example.serhey.weather.CallBackWeek;
+package com.example.serhey.weather.CallBackNow;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
 public class Rain {
+
     @SerializedName("3h")
     @Expose
     private Float _3h;
@@ -28,5 +29,3 @@ public class Rain {
     }
 
 }
-
-

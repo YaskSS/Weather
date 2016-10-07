@@ -12,7 +12,7 @@ public class Wind {
     private Float speed;
     @SerializedName("deg")
     @Expose
-    private Integer deg;
+    private Float deg;
     @SerializedName("gust")
     @Expose
     private Float gust;
@@ -40,7 +40,7 @@ public class Wind {
      * @return
      *     The deg
      */
-    public Integer getDeg() {
+    public Float getDeg() {
         return deg;
     }
 
@@ -49,7 +49,7 @@ public class Wind {
      * @param deg
      *     The deg
      */
-    public void setDeg(Integer deg) {
+    public void setDeg(Float deg) {
         this.deg = deg;
     }
 

@@ -3,6 +3,7 @@ package com.example.serhey.weather.tabs;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,8 +23,9 @@ import retrofit2.Response;
 /**
  * Created by Serhey on 04.09.2016.
  */
-public class WeekForecastAdapter extends Fragment {
+public class WeekForecastAdapter extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     protected AppBridge appBridge;
     ForecastAdapter forecastAdapter;
     RecyclerView recyclerView;
@@ -36,6 +38,8 @@ public class WeekForecastAdapter extends Fragment {
         forecastAdapter = new ForecastAdapter(getActivity().getApplication());
         recyclerView.setAdapter(forecastAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplication()));
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_week);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         loadWeather();
         return view;
     }
@@ -61,4 +65,9 @@ public class WeekForecastAdapter extends Fragment {
 }
 
 
+    @Override
+    public void onRefresh() {
+        loadWeather();
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
 }

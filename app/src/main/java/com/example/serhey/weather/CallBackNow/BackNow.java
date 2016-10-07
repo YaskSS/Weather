@@ -24,6 +24,9 @@ public class BackNow {
     @SerializedName("wind")
     @Expose
     private Wind wind;
+    @SerializedName("rain")
+    @Expose
+    private Rain rain;
     @SerializedName("clouds")
     @Expose
     private Clouds clouds;
@@ -117,6 +120,16 @@ public class BackNow {
         this.wind = wind;
     }
 
+    /**
+     * @return The rain
+     */
+    public Rain getRain(){return rain;}
+    /**
+     * @param rain The wind
+     */
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
     /**
      * @return The clouds
      */

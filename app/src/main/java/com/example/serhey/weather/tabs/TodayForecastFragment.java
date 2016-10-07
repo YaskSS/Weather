@@ -1,8 +1,6 @@
 package com.example.serhey.weather.tabs;
 
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.serhey.weather.CallBackNow.BackNow;
 import com.example.serhey.weather.CallBackNow.Weather;
@@ -60,19 +57,7 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
         imageViewNow = (ImageView) view.findViewById(R.id.imageView);
         mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-
-        mSwipeRefreshLayout.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mSwipeRefreshLayout.setRefreshing(true);
-
-                                        loadWeather();
-                                        mSwipeRefreshLayout.setRefreshing(false);
-                                    }
-                                }
-        );
-        mSwipeRefreshLayout.setColorSchemeColors(Color.RED, Color.GREEN, Color.BLUE, Color.CYAN);
-
+        loadWeather();
         return view;
     }
 
@@ -82,19 +67,19 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
             public void onResponse(Call<BackNow> call, Response<BackNow> response) {
                 if (response.isSuccessful()) {
                     Log.d("qwe", "TFF, ok");
-                    getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("city_weather", response.body().getName());
-                    getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("temperaure_weather", String.format("%s°C", response.body().getMain().getTemp()));
-                    getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("wind_weather", String.format("Ветер %s м/с \nОблачность %s%%", response.body().getWind()
-                            .getSpeed().toString(), response.body().getClouds().getAll().toString()));
-                    mListWeather = response.body().getWeather();
-                    getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("icon_weather", mListWeather.get(0).getIcon());
+                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("city_weather", response.body().getName());
+                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("temperaure_weather", String.format("%s°C", response.body().getMain().getTemp()));
+                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("wind_weather", String.format("Ветер %s м/с \nОблачность %s%%", response.body().getWind()
+                   //         .getSpeed().toString(), response.body().getClouds().getAll().toString()));
+                   // mListWeather = response.body().getWeather();
+                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("icon_weather", mListWeather.get(0).getIcon());
 
                     tvCity.setText(response.body().getName());
                     tvTemperature.setText( String.format("%s°C", response.body().getMain().getTemp()));
                     textViewWind.setText(String.format("Ветер %s м/с \nОблачность %s%%", response.body().getWind().getSpeed().toString(), response.body().getClouds().getAll().toString()));
-
-                    codeIcon =mListWeather.get(0).getIcon();
-                    Log.d("qwe", codeIcon);
+                    mListWeather = response.body().getWeather();
+                    codeIcon = mListWeather.get(0).getIcon();
+//                    Log.d("qwe", codeIcon);
                     imageViewNow.setImageResource(mPictureAdapter.setImage(codeIcon));
                 }
             }
@@ -102,15 +87,8 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
             @Override
             public void onFailure(Call<BackNow> call, Throwable t) {
                 Log.d("qwe", "TFF, !ok");
-                Toast.makeText(getActivity().getApplicationContext(), "Error in write City name", Toast.LENGTH_SHORT).show();
-
-                tvCity.setText(getActivity().getApplicationContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).getString("city_weather", ""));
-                tvTemperature.setText(getActivity().getApplicationContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).getString("temperaure_weather", ""));
-                textViewWind.setText(getActivity().getApplicationContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).getString("wind_weather", ""));
-                codeIcon = getActivity().getApplicationContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).getString("icon_weather", "");
-                Log.d("qwe", codeIcon);
-                imageViewNow.setImageResource(mPictureAdapter.setImage(codeIcon));
-
+                t.printStackTrace();
+                //Toast.makeText(getActivity().getApplicationContext(), "Error in write City name " + "'" + getActivity().getApplicationContext().getSharedPreferences("CITY", Context.MODE_PRIVATE).getString("city_name","")+ "'", Toast.LENGTH_SHORT).show();
             }
         });
     }
