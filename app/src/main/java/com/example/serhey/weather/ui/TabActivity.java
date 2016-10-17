@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.tabs.TabAdapter;
+import com.example.serhey.weather.tabs.TodayForecastFragment;
 
 /**
  * Created by Serhey on 04.09.2016.
@@ -26,7 +27,7 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
     TabLayout tabLayout;
     Toolbar toolbar;
     StatusBarNotification statusBarNotification;
-
+    TodayForecastFragment mTodayForecastFragment;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -42,7 +43,11 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
         viewPager.setAdapter(new TabAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
         getBaseContext().getSharedPreferences("CITY", Context.MODE_PRIVATE).edit().putString("city_name", "Kiev").commit();
+
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,13 +63,19 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
-    //noinspection SimplifiableIfStatement
+
     if (id == R.id.search) {
+        updateDate();
         return true;
     }
 
     return super.onOptionsItemSelected(item);
 }
+
+    private void updateDate() {
+        mTodayForecastFragment = new TodayForecastFragment();
+        mTodayForecastFragment.updateCityToday();
+    }
 
     @Override
     public boolean onQueryTextSubmit(String query) {

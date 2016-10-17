@@ -17,7 +17,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/card_view"
-        android:background="#81D4FA"
+        android:background="#4DB6AC"
         />
 
 </RelativeLayout>

@@ -1,78 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/swipe_container_tomorrow"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#81D4FA"
-    >
 
-    <LinearLayout
-        android:id="@+id/Layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:orientation="vertical"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:background="@drawable/backlayouttomorrow"
+        >
+
+
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large Text"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:layout_constraintTop_toTopOf="@+id/guideline4"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline5"/>
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:layout_below="@+id/textViewCity"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintLeft_toRightOf="@+id/textViewCity"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textViewCity"/>
+
+
+
         <TextView
-            android:id="@+id/textViewCity"
+            android:id="@+id/textViewTemperature2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:layout_alignParentLeft="true"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textSize="20sp"
+            tools:text="Text"
+
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/textViewDate"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewDate"/>
+
 
         <TextView
-            android:id="@+id/textViewDate"
+            android:id="@+id/textViewVeter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:layout_below="@+id/textViewCity"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline5"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCity"/>
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="@+id/guideline4"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"/>
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline4"
+            app:layout_constraintGuide_begin="30dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="30dp"
+            tools:layout_editor_absoluteX="0dp"/>
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="567dp"
+            android:id="@+id/guideline5"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="15dp"
+            app:layout_constraintGuide_begin="15dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listTomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/card_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="32dp"/>
 
-
-    <TextView
-        android:layout_gravity="center"
-        android:id="@+id/textViewTemperature2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_alignParentRight="true"
-        android:textSize="20sp"
-        android:layout_marginRight="25dp"
-        tools:text="Medium Text" />
-
-
-
-    <TextView
-        android:id="@+id/textViewVeter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Small Text"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="40dp"
-        android:layout_below="@+id/Layout"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="8dp"
-        android:layout_alignParentRight="true"
-
-        />
-
-</RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

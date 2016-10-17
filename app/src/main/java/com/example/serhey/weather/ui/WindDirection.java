@@ -29,4 +29,26 @@ public class WindDirection {
         }
         return ansverMethodIcon;
     }
+
+    public String setWindDirection(float cod_id) {
+        String ansverMethodIcon = "";
+        if (cod_id >= 0 && cod_id <= 45) {
+            ansverMethodIcon = "северо-восточный";
+        } else if (cod_id >= 45 && cod_id <= 90) {
+            ansverMethodIcon = "восточный";
+        } else if (cod_id >= 90&& cod_id <= 135) {
+            ansverMethodIcon = "юго-восточный";
+        } else if (cod_id >= 135 && cod_id <= 180) {
+            ansverMethodIcon = "южный";
+        } else if (cod_id >= 180 && cod_id <= 225) {
+            ansverMethodIcon = "юго-западный";
+        } else if (cod_id >= 225 && cod_id <= 270) {
+            ansverMethodIcon = "западный";
+        } else if (cod_id >= 270 && cod_id <= 315) {
+            ansverMethodIcon = "северо-западный";
+        } else if (cod_id >= 315&& cod_id <= 360) {
+            ansverMethodIcon = "северный";
+        }
+        return ansverMethodIcon;
+    }
 }

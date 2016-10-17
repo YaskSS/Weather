@@ -7,54 +7,80 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="2dp"
     android:padding="8dp"
-    android:layout_margin="0dp"
+    android:layout_margin="4dp"
     carcard_view:cardBackgroundColor="#81D4FA">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:orientation="horizontal"
-        android:background="#81D4FA"
+        android:background="#80CBC4"
         >
+
         <TextView
-            android:layout_margin="8dp"
             android:id="@+id/temp"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
+            android:text="temp"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
             android:text="Направление ветра"
-            android:layout_below="@+id/temp"
-            android:textColor="#000"/>
+            android:textColor="#000"
+
+            android:id="@+id/textViewWindDirection"
+            app:layout_constraintTop_toTopOf="@+id/guideline6"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"/>
 
         <ImageView
             android:id="@+id/iconWind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/temp"
-            android:layout_marginLeft="115dp" />
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            app:layout_constraintLeft_toRightOf="@+id/textViewWindDirection"
+            app:layout_constraintTop_toTopOf="@+id/guideline6"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"/>
 
         <ImageView
             android:id="@+id/icon"
-            android:paddingTop="2dp"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"/>
+
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:layout_alignParentRight="true"
+            android:text="temperat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
             android:textColor="#000000"
-            android:layout_below="@+id/icon"
-            android:id="@+id/temperature_item_fragment"/>
-    </RelativeLayout>
+            android:id="@+id/temperature_item_fragment"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/temp"
+            android:layout_marginLeft="8dp"/>
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline6"
+            app:layout_constraintGuide_begin="32dp"
+            android:orientation="horizontal"
+            carcard_view:layout_editor_absoluteY="32dp"
+            carcard_view:layout_editor_absoluteX="0dp"/>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

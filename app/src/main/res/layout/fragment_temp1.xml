@@ -1,71 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#81D4FA"
-    >
+    android:background="@drawable/backlay">
 
 
-            <TextView
-                android:id="@+id/textViewCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:layout_centerHorizontal="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:layout_gravity="center"
-                android:id="@+id/textViewTemperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="50sp"
-                android:layout_marginTop="0dp"
-                android:layout_below="@+id/imageView"
-                android:layout_centerHorizontal="true"
-                tools:text="Medium Text"
-
-                />
-
-            <TextView
-                android:id="@+id/textViewDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medium Text"
-                android:layout_below="@+id/textViewCity"
-                android:layout_centerHorizontal="true"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/textViewVeter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Small Text"
-                android:layout_marginTop="6dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/textViewTemperature"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewDate"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:layout_centerHorizontal="true"
-                />
+        <TextView
+            android:id="@+id/textViewCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="City"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textViewCity"
+            android:text="Date"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCity"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
 
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView
+            android:id="@+id/textViewTemperature"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="50sp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
+
+
+        <TextView
+            android:id="@+id/textViewVeter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTemperature"
+
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/humidity1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
+
+
+        <TextView
+            android:id="@+id/humidity1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="?android:attr/textAppearanceSmall"
+
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTemperature"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="567dp"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="192dp"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        app:layout_constraintGuide_begin="30dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="30dp"
+        tools:layout_editor_absoluteX="0dp"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline3"
+        app:layout_constraintGuide_begin="295dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="295dp"
+        tools:layout_editor_absoluteX="0dp"/>
+
+
+</android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.SwipeRefreshLayout>

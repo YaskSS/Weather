@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
     TextView tvTemperature;
     TextView textViewWind;
     TextView textViewDate;
+    TextView tvHumidity;
     List<Weather> mListWeather;
     ImageView imageViewNow;
     String codeIcon;
@@ -52,12 +54,25 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
         tvCity = (TextView) view.findViewById(R.id.textViewCity);
         tvTemperature = (TextView) view.findViewById(R.id.textViewTemperature);
         textViewDate = (TextView) view.findViewById(R.id.textViewDate);
-        textViewDate.setText(new SimpleDateFormat("yyyy.MM.dd_HH.mm").format(Calendar.getInstance().getTime()));
+        textViewDate.setText(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()));
         textViewWind = (TextView) view.findViewById(R.id.textViewVeter);
         imageViewNow = (ImageView) view.findViewById(R.id.imageView);
-        mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_container);
+        tvHumidity = (TextView) view.findViewById(R.id.humidity1);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         loadWeather();
+
+        mSwipeRefreshLayout.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.KEYCODE_SEARCH)
+                    if (keyCode == KeyEvent.KEYCODE_SEARCH) {
+                        loadWeather();
+                        return true;
+                    }
+                return false;
+            }
+        });
+
         return view;
     }
 
@@ -67,16 +82,10 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
             public void onResponse(Call<BackNow> call, Response<BackNow> response) {
                 if (response.isSuccessful()) {
                     Log.d("qwe", "TFF, ok");
-                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("city_weather", response.body().getName());
-                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("temperaure_weather", String.format("%s°C", response.body().getMain().getTemp()));
-                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("wind_weather", String.format("Ветер %s м/с \nОблачность %s%%", response.body().getWind()
-                   //         .getSpeed().toString(), response.body().getClouds().getAll().toString()));
-                   // mListWeather = response.body().getWeather();
-                   // getActivity().getBaseContext().getSharedPreferences("WEATHER", Context.MODE_PRIVATE).edit().putString("icon_weather", mListWeather.get(0).getIcon());
-
                     tvCity.setText(response.body().getName());
-                    tvTemperature.setText( String.format("%s°C", response.body().getMain().getTemp()));
-                    textViewWind.setText(String.format("Ветер %s м/с \nОблачность %s%%", response.body().getWind().getSpeed().toString(), response.body().getClouds().getAll().toString()));
+                    tvTemperature.setText(String.format("%s°C", response.body().getMain().getTemp()));
+                    textViewWind.setText(String.format("Ветер %s м/с", response.body().getWind().getSpeed().toString()));
+                    tvHumidity.setText(String.format("Влажность %s%%", response.body().getClouds().getAll().toString()));
                     mListWeather = response.body().getWeather();
                     codeIcon = mListWeather.get(0).getIcon();
 //                    Log.d("qwe", codeIcon);
@@ -97,5 +106,9 @@ public class TodayForecastFragment extends Fragment implements SwipeRefreshLayou
     public void onRefresh() {
         loadWeather();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    public void updateCityToday() {
+        loadWeather();
     }
 }

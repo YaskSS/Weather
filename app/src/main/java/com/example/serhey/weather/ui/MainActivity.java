@@ -67,9 +67,8 @@ public class MainActivity extends Activity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 boolean consumed = false;
                 if (keyCode == EditorInfo.IME_ACTION_SEARCH) {
-                    //Делаем то, что нам нужно...
 
-                    consumed = true; //это если не хотим, чтобы нажатая кнопка обрабатывалась дальше видом, иначе нужно оставить false
+                    consumed = true;
                 }
                 return consumed;
             }
