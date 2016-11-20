@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
    >
 
-    <ImageView
-        android:id="@+id/content_hamburger"
-        style="@style/ImageView.Hamburger"
-        android:src="@drawable/ic_menu_90" />
-
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarTabs"
@@ -28,6 +23,7 @@
         app:tabGravity="fill"
         app:tabMode="fixed">
     </android.support.design.widget.TabLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"

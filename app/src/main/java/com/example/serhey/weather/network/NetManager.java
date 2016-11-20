@@ -38,7 +38,7 @@ public class NetManager {
 
     public void getTodayWeather(Callback<BackNow> callback) {
         Map<String, String> query = new HashMap<String, String>();
-        String stringGetCity = context.getSharedPreferences("CITY", Context.MODE_PRIVATE).getString("city_name","");
+        String stringGetCity = context.getSharedPreferences("CITY", Context.MODE_PRIVATE).getString("city_name","Kiev");
         query.put("q", stringGetCity);
         query.put("units", "metric");
         query.put(APP_ID_NAME, APP_ID);

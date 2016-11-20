@@ -80,4 +80,11 @@
         <item name="android:layout_marginLeft">@dimen/guillotine_large_margin</item>
     </style>
 
+
+    <style name="MyEditTextstyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@color/cardview_light_background</item>
+    </style>
+
+
 </resources>

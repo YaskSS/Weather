@@ -36,10 +36,11 @@ public class TabAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
-            case 0:return "Today";
+            case 0:return "Today" ;
             case 1:return "Tomorrow";
             case 2:return "Week";
         }
         return null;
     }
+
 }

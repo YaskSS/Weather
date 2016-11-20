@@ -42,9 +42,6 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
 
         viewPager.setAdapter(new TabAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
-        getBaseContext().getSharedPreferences("CITY", Context.MODE_PRIVATE).edit().putString("city_name", "Kiev").commit();
-
-
 
     }
 
@@ -55,9 +52,7 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
         getMenuInflater().inflate(R.menu.meu_main, menu);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
-
         searchView.setOnQueryTextListener(this);
-
         return true;
     }
     @Override
@@ -84,7 +79,7 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
 
     @Override
     public boolean onQueryTextChange(String newText) {
-       getBaseContext().getSharedPreferences("CITY", Context.MODE_PRIVATE).edit().putString("city_name", newText).commit();
+       getBaseContext().getSharedPreferences("CITY", Context.MODE_PRIVATE).edit().putString("city_name", newText).apply();
 
         return false;
     }
