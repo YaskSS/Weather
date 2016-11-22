@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".core.App"
         android:icon="@drawable/ic_launcher"
@@ -28,6 +29,9 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="11ebc2b2d8bb6619f2d1fb2151840b31c85fd793" />
+
+        <activity android:name=".ui.SettingsActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 
 

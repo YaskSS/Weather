@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.serhey.weather.CallBackNow.BackNow;
 import com.example.serhey.weather.CallBackWeek.BackWeek;
+import com.example.serhey.weather.logic.SharedPrefHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,8 +39,7 @@ public class NetManager {
 
     public void getTodayWeather(Callback<BackNow> callback) {
         Map<String, String> query = new HashMap<String, String>();
-        String stringGetCity = context.getSharedPreferences("CITY", Context.MODE_PRIVATE).getString("city_name","Kiev");
-        query.put("q", stringGetCity);
+        query.put("q", SharedPrefHelper.getInstance().getCity());
         query.put("units", "metric");
         query.put(APP_ID_NAME, APP_ID);
 
@@ -49,8 +49,7 @@ public class NetManager {
 
     public void getWeekWeather(Callback<BackWeek> callback) {
         Map<String, String> query = new HashMap<String, String>();
-        String stringGetCityWeek = context.getSharedPreferences("CITY", Context.MODE_PRIVATE).getString("city_name","");
-        query.put("q", stringGetCityWeek);
+        query.put("q", SharedPrefHelper.getInstance().getCity());
         query.put("mode", "json");
         query.put("units", "metric");
         query.put(APP_ID_NAME, APP_ID);
