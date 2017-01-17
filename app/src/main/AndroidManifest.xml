@@ -5,7 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:name=".core.App"
         android:icon="@drawable/ic_launcher"
@@ -13,12 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.TabActivity"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"
+            android:configChanges="locale">
 
         </activity>
 
         <activity android:name=".ui.SplashScreenActivity"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"
+            android:configChanges="locale">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +35,10 @@
             android:value="11ebc2b2d8bb6619f2d1fb2151840b31c85fd793" />
 
         <activity android:name=".ui.SettingsActivity"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait"
+            android:configChanges="locale"/>
+
+        <service android:name=".service.IntentServiceUpdateWeather"/>
     </application>
 
 

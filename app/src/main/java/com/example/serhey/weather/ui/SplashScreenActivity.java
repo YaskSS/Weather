@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.serhey.weather.R;
+import com.example.serhey.weather.logic.SharedPrefHelper;
+import com.example.serhey.weather.network.Request;
 
 /**
  * Created by Serhey on 20.11.2016.
@@ -26,11 +29,18 @@ public class SplashScreenActivity extends AppCompatActivity {
     private ImageView snowImageView4;
     private ImageView snowImageView5;
     private ImageView snowImageView;
-
+    private     Request request;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        request = new Request();
+
+        if (SharedPrefHelper.getInstance().getWeatherNowData() == null) {
+            Log.i("TabActivity","SharedPref returned null");
+            request.requestTodayWeather();
+            request.requestWeekWeather();
+        }
         initViews();
         setSunImageViewAnimation();
     }

@@ -1,9 +1,12 @@
 package com.example.serhey.weather.CallBackNow;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -45,6 +48,8 @@ public class BackNow {
     @SerializedName("cod")
     @Expose
     private Integer cod;
+
+    private static transient Gson gson = new Gson();
 
     /**
      * @return The coord
@@ -214,4 +219,12 @@ public class BackNow {
         this.cod = cod;
     }
 
+    public static String toJSONCollection(BackNow backNowData){
+        return gson.toJson(backNowData);
+    }
+
+    public static BackNow fromJsonCollection(String backNowData){
+        return gson.fromJson(backNowData, new TypeToken<BackNow>() {
+        }.getType());
+    }
 }

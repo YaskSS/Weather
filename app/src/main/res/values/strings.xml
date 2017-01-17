@@ -9,13 +9,54 @@
     <string name="search">Search</string>
 
     <string name="today">today</string>
-    <string name="tomorrow">today</string>
-    <string name="week">today</string>
+    <string name="tomorrow">tomorrow</string>
+    <string name="week">week</string>
 
 
-    <string name="text">Squid blog crucifix Marfa, consectetur vero placeat mixtape. Non seitan sriracha eu, do Banksy fashion axe cred qui vegan delectus consequat Helvetica mollit. XOXO gluten-free disrupt, gastropub officia cliche chillwave hella pop-up. Fixie swag raw denim, YOLO craft beer assumenda occupy veniam photo booth pug consectetur next level Portland tote bag +1. Mlkshk PBR aliquip placeat Wes Anderson.</string>
     <string name="title">My Description</string>
     <string name="context_menu">Context menu</string>
     <string name="city">City</string>
+
+    <string name="refresh_rate">Automatic refresh rate</string>
+    <string name="change_of_language">Change of language</string>
+    <string name="date_for_display">Data for display today weather</string>
+    <string name="temperature">Temperature</string>
+    <string name="one_hour">One hour</string>
+    <string name="two_hours">Two hours</string>
+    <string name="Three_hours">Three hours</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="cloudiness">Cloudiness</string>
+    <string name="pressure">Pressure</string>
+    <string name="date">Date</string>
+    <string name="cit">City</string>
+    <string name="icon">Icon</string>
+    <string name="changeNetwork">no connection with the internet, please check connect</string>
+    <string name="search_sity">Search city</string>
+    <string name="like">Like</string>
+    <string name="send_error">Send error</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="text">---</string>
+    <string name="northeast">northeast</string>
+    <string name="east">east</string>
+    <string name="southeast">southeast</string>
+    <string name="southern">southern</string>
+    <string name="southwest">southwest</string>
+    <string name="west">west</string>
+    <string name="northwest">northwest</string>
+    <string name="north">north</string>
+    <string name="mVs">m/s</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wendesday">Wendesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">sunday</string>
+    <string name="weather">Weather</string>
+    <string name="updateDate">Weather was it is updated for</string>
+    <string name="notification">Turn on notification</string>
 
 </resources>

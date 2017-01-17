@@ -1,6 +1,7 @@
 package com.example.serhey.weather.ui;
 
 import com.example.serhey.weather.R;
+import com.example.serhey.weather.core.App;
 
 /**
  * Created by Serhey on 30.08.2016.
@@ -31,24 +32,24 @@ public class WindDirection {
     }
 
     public String setWindDirection(float cod_id) {
-        String ansverMethodIcon = "";
+        String answerMethodIcon = "";
         if (cod_id >= 0 && cod_id <= 45) {
-            ansverMethodIcon = "северо-восточный";
+            answerMethodIcon = App.getContext().getString(R.string.northeast);
         } else if (cod_id >= 45 && cod_id <= 90) {
-            ansverMethodIcon = "восточный";
+            answerMethodIcon = App.getContext().getString(R.string.east);
         } else if (cod_id >= 90&& cod_id <= 135) {
-            ansverMethodIcon = "юго-восточный";
+            answerMethodIcon = App.getContext().getString(R.string.southeast);
         } else if (cod_id >= 135 && cod_id <= 180) {
-            ansverMethodIcon = "южный";
+            answerMethodIcon = App.getContext().getString(R.string.southern);
         } else if (cod_id >= 180 && cod_id <= 225) {
-            ansverMethodIcon = "юго-западный";
+            answerMethodIcon = App.getContext().getString(R.string.southwest);
         } else if (cod_id >= 225 && cod_id <= 270) {
-            ansverMethodIcon = "западный";
+            answerMethodIcon = App.getContext().getString(R.string.west);
         } else if (cod_id >= 270 && cod_id <= 315) {
-            ansverMethodIcon = "северо-западный";
+            answerMethodIcon = App.getContext().getString(R.string.northwest);
         } else if (cod_id >= 315&& cod_id <= 360) {
-            ansverMethodIcon = "северный";
+            answerMethodIcon = App.getContext().getString(R.string.north);
         }
-        return ansverMethodIcon;
+        return answerMethodIcon;
     }
 }

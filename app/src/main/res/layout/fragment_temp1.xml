@@ -92,7 +92,20 @@
             tools:layout_constraintLeft_creator="1"/>
 
 
-        <ImageView
+    <TextView
+        android:text="cloud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_cloud"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVeter"
+        tools:layout_constraintLeft_creator="1" />
+
+    <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,6 +144,15 @@
         android:orientation="horizontal"
         tools:layout_editor_absoluteY="295dp"
         tools:layout_editor_absoluteX="0dp"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline10"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="20dp"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </android.support.constraint.ConstraintLayout>

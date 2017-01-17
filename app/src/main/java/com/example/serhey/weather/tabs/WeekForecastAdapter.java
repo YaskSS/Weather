@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.serhey.weather.CallBackWeek.BackWeek;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.core.AppBridge;
+import com.example.serhey.weather.logic.SharedPrefHelper;
 import com.example.serhey.weather.ui.ForecastAdapter;
 
 import retrofit2.Call;
@@ -29,6 +30,8 @@ public class WeekForecastAdapter extends Fragment implements SwipeRefreshLayout.
     protected AppBridge appBridge;
     ForecastAdapter forecastAdapter;
     RecyclerView recyclerView;
+    private BackWeek backWeek;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,12 +43,15 @@ public class WeekForecastAdapter extends Fragment implements SwipeRefreshLayout.
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplication()));
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_week);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        loadWeather();
+
+        loadWeekWeather();
         return view;
     }
 
-    private void loadWeather() {
-    appBridge.getNetManager().getWeekWeather(new Callback<BackWeek>() {
+    public void loadWeekWeather() {
+        backWeek = SharedPrefHelper.getInstance().getWeatherWeekData();
+        forecastAdapter.addData(backWeek.getList());
+   /* appBridge.getNetManager().getWeekWeather(new Callback<BackWeek>() {
         @Override
         public void onResponse(Call<BackWeek> call, Response<BackWeek> response) {
             if (response.isSuccessful()) {
@@ -61,13 +67,20 @@ public class WeekForecastAdapter extends Fragment implements SwipeRefreshLayout.
             t.printStackTrace();
 
         }
-    });
+    });*/
 }
 
 
     @Override
     public void onRefresh() {
-        loadWeather();
+        appBridge.getRequest().requestWeekWeather();
+        loadWeekWeather();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadWeekWeather();
     }
 }

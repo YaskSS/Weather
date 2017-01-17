@@ -1,8 +1,11 @@
 
 package com.example.serhey.weather.CallBackWeek;
 
+import com.example.serhey.weather.CallBackNow.BackNow;
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,8 @@ public class BackWeek {
     @SerializedName("list")
     @Expose
     private java.util.List<Forecast> list = new ArrayList<Forecast>();
+
+    private static transient Gson gson = new Gson();
 
     /**
      *
@@ -115,4 +120,13 @@ public class BackWeek {
         this.list = list;
     }
 
+
+    public static String toJSONCollection(BackWeek backWeekData){
+        return gson.toJson(backWeekData);
+    }
+
+    public static BackWeek fromJsonCollection(String backWeekData){
+        return gson.fromJson(backWeekData, new TypeToken<BackWeek>() {
+        }.getType());
+    }
 }

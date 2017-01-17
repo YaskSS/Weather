@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.serhey.weather.CallBackWeek.Forecast;
 import com.example.serhey.weather.R;
+import com.example.serhey.weather.core.App;
 import com.example.serhey.weather.picture.PictureAdapter;
 
 import java.text.SimpleDateFormat;
@@ -72,7 +73,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.VH> {
             temperature_item_fragment.setText(String.format("%s°C", forecast.getMain().getTemp()));
             iconWind.setImageResource(windDirection.setIconWind(forecast.getWind().getDeg()));
             icon.setImageResource(pictureAdapter1.setImage(forecast.getWeather().get(0).getIcon()));
-            tvWindDirection.setText("Ветер " + windDirection.setWindDirection(forecast.getWind().getDeg()) + " " + forecast.getWind().getSpeed().toString() + " м/с");
+            tvWindDirection.setText(App.getContext().getString(R.string.wind)+ " " + windDirection.setWindDirection(forecast.getWind().getDeg()) + " " + forecast.getWind().getSpeed().toString() + " м/с");
             icon.setColorFilter(new Random().nextInt());
         }
     }
