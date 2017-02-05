@@ -6,20 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.serhey.weather.CallBackWeek.BackWeek;
+import com.example.serhey.weather.callBackWeek.BackWeek;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.core.AppBridge;
 import com.example.serhey.weather.logic.SharedPrefHelper;
 import com.example.serhey.weather.ui.ForecastAdapter;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Serhey on 04.09.2016.

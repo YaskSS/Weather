@@ -2,13 +2,14 @@ package com.example.serhey.weather.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.serhey.weather.CallBackWeek.Forecast;
+import com.example.serhey.weather.callBackWeek.Forecast;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.picture.PictureAdapter;
 
@@ -33,7 +34,7 @@ public class TomorrowWeatherOnAllDayAdapter extends RecyclerView.Adapter<Tomorro
     public TomorrowWeatherOnAllDayAdapter (Context context){
         inflater = LayoutInflater.from(context);
         data = new ArrayList<>();
-
+        Log.i("Tomorrowdaptersd", "WORKED");
     }
 
     @Override

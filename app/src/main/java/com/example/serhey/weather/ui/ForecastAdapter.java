@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.serhey.weather.CallBackWeek.Forecast;
+import com.example.serhey.weather.callBackWeek.Forecast;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.core.App;
 import com.example.serhey.weather.picture.PictureAdapter;

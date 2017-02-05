@@ -5,8 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import com.example.serhey.weather.CallBackNow.BackNow;
-import com.example.serhey.weather.CallBackWeek.BackWeek;
+import com.example.serhey.weather.callBackNow.BackNow;
+import com.example.serhey.weather.callBackWeek.BackWeek;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.core.App;
 import com.example.serhey.weather.logic.SharedPrefHelper;

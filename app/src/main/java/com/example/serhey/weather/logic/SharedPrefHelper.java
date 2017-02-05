@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.serhey.weather.CallBackNow.BackNow;
-import com.example.serhey.weather.CallBackWeek.BackWeek;
+import com.example.serhey.weather.callBackNow.BackNow;
+import com.example.serhey.weather.callBackWeek.BackWeek;
 import com.example.serhey.weather.core.App;
-import com.example.serhey.weather.tabs.TodayForecastFragment;
 
 /**
  * Created by Serhey on 22.11.2016.
@@ -26,7 +25,7 @@ public class SharedPrefHelper {
     private static final String TEMPERATURE_VISIBILITY = "temperature";
     private static final int DEFAULT_TEMPERATURE = 1;
 
-    private static final String HUMIDITY_VISIBILITY = "humiditi";
+    private static final String HUMIDITY_VISIBILITY = "humidity";
     private static final int DEFAULT_HUMIDITY = 1;
 
     private static final String WIND_VISIBILITY = "wind";

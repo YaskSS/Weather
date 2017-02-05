@@ -28,9 +28,9 @@ public class App extends Application implements AppBridge {
         context = base;
     }
 
-    public static Context getContext() {
-        return context;
-    }
+        public static Context getContext() {
+            return context;
+        }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -74,5 +74,4 @@ public class App extends Application implements AppBridge {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, null);
     }
-
 }

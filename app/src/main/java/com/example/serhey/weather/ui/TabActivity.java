@@ -52,10 +52,6 @@ public class TabActivity extends AppCompatActivity implements OnMenuItemClickLis
     TabLayout tabLayout;
     Toolbar toolbar;
     AppBridge appBridge;
-    StatusBarNotification statusBarNotification;
-    TodayForecastFragment mTodayForecastFragment;
-
-    // SharedPreferences sharedPreferences;
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;

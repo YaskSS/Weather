@@ -13,9 +13,9 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.serhey.weather.CallBackNow.BackNow;
-import com.example.serhey.weather.CallBackNow.Weather;
-import com.example.serhey.weather.CallBackWeek.BackWeek;
+import com.example.serhey.weather.callBackNow.BackNow;
+import com.example.serhey.weather.callBackNow.Weather;
+import com.example.serhey.weather.callBackWeek.BackWeek;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.core.AppBridge;
 import com.example.serhey.weather.picture.PictureAdapter;
