@@ -1,5 +1,8 @@
 package com.example.serhey.weather.ui;
 
+import com.example.serhey.weather.R;
+import com.example.serhey.weather.core.App;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,25 +19,25 @@ public class DayOfWeek {
         id_day = calendar.get(Calendar.DAY_OF_WEEK);
         switch (id_day) {
             case 1:
-                day = "Понедельник";
+                day = App.getContext().getString(R.string.monday);
                 break;
             case 2:
-                day = "Вторник";
+                day = App.getContext().getString(R.string.tuesday);
                 break;
             case 3:
-                day = "Среда";
+                day = App.getContext().getString(R.string.wendesday);
                 break;
             case 4:
-                day = "Четверг";
+                day = App.getContext().getString(R.string.thursday);
                 break;
             case 5:
-                day = "Пятница";
+                day = App.getContext().getString(R.string.friday);
                 break;
             case 6:
-                day = "Суббота";
+                day = App.getContext().getString(R.string.saturday);
                 break;
             case 7:
-                day = "Воскресенье";
+                day = App.getContext().getString(R.string.sunday);
                 break;
         }
         return day;
