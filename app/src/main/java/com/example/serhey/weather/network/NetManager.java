@@ -1,10 +1,15 @@
 package com.example.serhey.weather.network;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.Toast;
 
-import com.example.serhey.weather.CallBackNow.BackNow;
-import com.example.serhey.weather.CallBackWeek.BackWeek;
-import com.example.serhey.weather.logic.SharedPrefHelper;
+import com.example.serhey.weather.db.responseNow.BackNow;
+import com.example.serhey.weather.db.responseWeek.BackWeek;
+import com.example.serhey.weather.R;
+import com.example.serhey.weather.core.App;
+import com.example.serhey.weather.db.SharedPrefHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -58,5 +63,21 @@ public class NetManager {
         callNow.enqueue(callback);
     }
 
+    public boolean checkConnectionWithInternet() {
+        if (!isOnline()) {
+            Toast.makeText(App.getContext().getApplicationContext(),
+                    App.getContext().getString(R.string.changeNetwork), Toast.LENGTH_LONG).show();
+            //finish(); When you need stop "activity"
+            return  false;
+        } else {
+            return true;
+        }
+    }
 
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) App.getContext().getSystemService(App.getContext().CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
 }

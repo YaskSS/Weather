@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CheckRadioSwitchButtons" parent="AppTheme.NoActionBar">
+        <item name="android:colorAccent">@color/menu_item_background</item>
+    </style>
+
+    <style name="MySwitch" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="background">@color/menu_item_background</item>
+        <item name="android:colorBackground">@color/menu_item_background</item>
+        <item name="android:colorActivatedHighlight">@color/menu_item_background</item>
+        <item name="android:colorButtonNormal">@color/menu_item_background</item>
+        <item name="colorControlNormal">#00695C</item>
+        <item name="colorControlActivated">@color/menu_item_background</item>
+    </style>
+</resources>
