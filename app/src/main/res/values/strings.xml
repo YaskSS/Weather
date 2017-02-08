@@ -27,7 +27,7 @@
     <string name="russian">Русский</string>
     <string name="english">English</string>
     <string name="humidity">Humidity</string>
-    <string name="wind">Wind</string>
+    <string name="wind">wind</string>
     <string name="cloudiness">Cloudiness</string>
     <string name="pressure">Pressure</string>
     <string name="date">Date</string>

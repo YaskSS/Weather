@@ -1,7 +1,7 @@
 package com.example.serhey.weather.network;
 
-import com.example.serhey.weather.callBackNow.BackNow;
-import com.example.serhey.weather.callBackWeek.BackWeek;
+import com.example.serhey.weather.db.responseNow.BackNow;
+import com.example.serhey.weather.db.responseWeek.BackWeek;
 
 import java.util.Map;
 

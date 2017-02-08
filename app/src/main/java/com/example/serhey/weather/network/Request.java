@@ -8,16 +8,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.serhey.weather.callBackNow.BackNow;
-import com.example.serhey.weather.callBackNow.Weather;
-import com.example.serhey.weather.callBackWeek.BackWeek;
+import com.example.serhey.weather.db.responseNow.BackNow;
+import com.example.serhey.weather.db.responseNow.Weather;
+import com.example.serhey.weather.db.responseWeek.BackWeek;
 import com.example.serhey.weather.R;
 import com.example.serhey.weather.core.App;
 import com.example.serhey.weather.core.AppBridge;
-import com.example.serhey.weather.logic.DBHelper;
-import com.example.serhey.weather.logic.SharedPrefHelper;
-import com.example.serhey.weather.logic.TodayWeatherCursorWrapper;
-import com.example.serhey.weather.tabs.TodayForecastFragment;
+import com.example.serhey.weather.db.DBHelper;
+import com.example.serhey.weather.db.SharedPrefHelper;
+import com.example.serhey.weather.db.TodayWeatherCursor;
+import com.example.serhey.weather.ui.fragments.TodayForecastFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,9 +30,9 @@ import retrofit2.Response;
 public class Request {
 
 
-    private static final String LOG_REQUEST = "Request.class";
+    private static final String TAG = "Request";
     protected AppBridge appBridge;
-    List<Weather> listWeatherForIcon;
+    private List<Weather> listWeatherForIcon;
     private Context context;
     private SQLiteDatabase sqLiteDatabase;
     private ContentValues contentValues;
@@ -49,8 +49,8 @@ public class Request {
                 @Override
                 public void onResponse(Call<BackNow> call, Response<BackNow> response) {
                     if (response.isSuccessful()) {
-                        Log.d(LOG_REQUEST, "todayWeather, ok");
-                        //SharedPrefHelper.getInstance().saveWeatherNowData(response.body());
+                        Log.d(TAG, "todayWeatherResponse, ok");
+                        //SharedPrefHelper.getInstance().saveWeatherDataNow(response.body());// for save in Shared
 
                         sqLiteDatabase.insert(DBHelper.TABLE, null,  getContentForSaveDB(response));
 
@@ -61,9 +61,9 @@ public class Request {
 
                 @Override
                 public void onFailure(Call<BackNow> call, Throwable t) {
-                    Log.d(LOG_REQUEST, "todayWeather, !ok");
+                    Log.d(TAG, "todayWeatherResponse, !ok");
                     t.printStackTrace();
-                    //SharedPrefHelper.getInstance().saveWeatherNowData(null);
+                    //SharedPrefHelper.getInstance().saveWeatherDataNow(null);
                 }
             });
         } else {
@@ -79,10 +79,10 @@ public class Request {
                 @Override
                 public void onResponse(Call<BackWeek> call, Response<BackWeek> response) {
                     if (response.isSuccessful()) {
-                        Log.d(LOG_REQUEST, "weekWeather ok");
+                        Log.d(TAG, "weekWeather ok");
                         SharedPrefHelper.getInstance().saveWeatherWeekData(response.body());
                     } else {
-                        Log.d(LOG_REQUEST, "weekWeather !ok");
+                        Log.d(TAG, "weekWeather !ok");
                     }
                 }
 
@@ -106,7 +106,7 @@ public class Request {
         }
     }
 
-    public TodayWeatherCursorWrapper queryWeatherToday(String whereClause, String[] whereArgs) {
+    public TodayWeatherCursor queryWeatherToday(String whereClause, String[] whereArgs) {
         Cursor cursor = sqLiteDatabase.query(
                 DBHelper.TABLE,
                 null, // Columns - null выбирает все столбцы
@@ -116,7 +116,7 @@ public class Request {
                 null, // having
                 null // orderBy
         );
-        return new TodayWeatherCursorWrapper(cursor);
+        return new TodayWeatherCursor(cursor);
     }
 
     public ContentValues getContentForSaveDB(Response<BackNow> response) {

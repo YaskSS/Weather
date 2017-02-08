@@ -3,10 +3,8 @@ package com.example.serhey.weather.core;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
-import com.example.serhey.weather.logic.SharedPrefHelper;
+import com.example.serhey.weather.db.SharedPrefHelper;
 import com.example.serhey.weather.network.NetManager;
 import com.crashlytics.android.Crashlytics;
 import com.example.serhey.weather.network.Request;
@@ -28,9 +26,10 @@ public class App extends Application implements AppBridge {
         context = base;
     }
 
-        public static Context getContext() {
-            return context;
-        }
+    public static Context getContext() {
+        return context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -47,16 +46,18 @@ public class App extends Application implements AppBridge {
     }
 
     @Override
-    public Request getRequest() {return  request;   }
+    public Request getRequest() {
+        return request;
+    }
 
-    private void setupLocalization(){
+    private void setupLocalization() {
         if (localization.equals("en")) {
             locale = new Locale(localization);
             Locale.setDefault(locale);
             Configuration config = new Configuration();
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config, null);
-        } else if (localization.equals("ru")){
+        } else if (localization.equals("ru")) {
             locale = new Locale(localization);
             Locale.setDefault(locale);
             Configuration config = new Configuration();

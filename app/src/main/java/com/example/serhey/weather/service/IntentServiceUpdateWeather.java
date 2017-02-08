@@ -11,10 +11,10 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import com.example.serhey.weather.R;
-import com.example.serhey.weather.logic.SharedPrefHelper;
+import com.example.serhey.weather.db.SharedPrefHelper;
 import com.example.serhey.weather.network.Request;
-import com.example.serhey.weather.tabs.TodayForecastFragment;
-import com.example.serhey.weather.ui.SettingsActivity;
+import com.example.serhey.weather.ui.fragments.TodayForecastFragment;
+import com.example.serhey.weather.ui.activities.SettingsActivity;
 
 /**
  * Created by yass on 1/13/17.
@@ -22,10 +22,9 @@ import com.example.serhey.weather.ui.SettingsActivity;
 
 public class IntentServiceUpdateWeather extends IntentService {
 
-    private static final String TAG = "IntentServiceUpdate";
+    private static final String TAG = "IntentService";
     private static final int POLL_INTERVAL =  SharedPrefHelper.getInstance().getTimeRefresh();
     Request request;
-
 
     public IntentServiceUpdateWeather() {
         super(TAG);
@@ -70,9 +69,9 @@ public class IntentServiceUpdateWeather extends IntentService {
     }
 
     private void startRequest() {
-        Log.i(TAG, "I am working NOW!! I am service");
+        Log.i(TAG, "I am working! I am service");
         if (SharedPrefHelper.getInstance().getStatusBackground().equals(SettingsActivity.BACKGROUND_ON)) {
-            SharedPrefHelper.getInstance().saveWeatherNowData(null);
+            SharedPrefHelper.getInstance().saveWeatherDataNow(null);
             request.requestTodayWeather();
             request.requestWeekWeather();
             if (SharedPrefHelper.getInstance().getStatusNotification().equals(SettingsActivity.NOTIFICATION_ON)) {
@@ -87,11 +86,10 @@ public class IntentServiceUpdateWeather extends IntentService {
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
                 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-        // оставим только самое необходимое
         builder.setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_launcher)
                 .setContentTitle(getString(R.string.weather))
-                .setContentText(getString(R.string.updateDate)+ " " + SharedPrefHelper.getInstance().getWeatherNowData().getName()); // Текст уведомления
+                .setContentText(getString(R.string.updateDate)+ " " + SharedPrefHelper.getInstance().getWeatherDataNow().getName()); // Текст уведомления
 
         Notification notification = builder.build();
 
